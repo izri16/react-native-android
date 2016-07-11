@@ -12,6 +12,6 @@ import {
   View
 } from 'react-native';
 
-import MainApp from './src/Main'
+import MainApp from './src/Navigation'
 
 AppRegistry.registerComponent('androidTestNavExperimental', () => MainApp);

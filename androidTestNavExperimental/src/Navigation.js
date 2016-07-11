@@ -9,7 +9,7 @@ import {
   BackAndroid
 } from 'react-native';
 
-import MyVeryComplexScene from './Scene';
+import Scene from './Scene';
 import Home from './Home';
 import Users from './Users';
 import Products from './Products';
@@ -50,10 +50,12 @@ class MainApplication extends Component {
   }
 
   componentDidMount () {
-    BackAndroid.addEventListener('hardwareBackPress', this._handleBackAction.bind(this));
+    BackAndroid.addEventListener('hardwareBackPress',
+      this._handleBackAction.bind(this));
   }
   componentWillUnmount () {
-    BackAndroid.removeEventListener('hardwareBackPress', this._handleBackAction.bind(this));
+    BackAndroid.removeEventListener('hardwareBackPress',
+      this._handleBackAction.bind(this));
   }
 
   _handleAction (action) {
@@ -85,7 +87,7 @@ class MainApplication extends Component {
       case 'Products':
         return (
           <View>
-            <MyVeryComplexScene
+            <Scene
               onPushRoute={this._handleAction.bind(this,
               { type: 'push', key: 'Users' })}
               onPopRoute={this._handleBackAction.bind(this)}
@@ -98,7 +100,7 @@ class MainApplication extends Component {
       case 'Users':
         return (
           <View>
-            <MyVeryComplexScene
+            <Scene
               onPopRoute={this._handleBackAction.bind(this)}
               onExit={this.props.onExit}
               name={'Users'}
@@ -108,21 +110,20 @@ class MainApplication extends Component {
         )
       default:
         return (
-          <View>
-            <MyVeryComplexScene
+          <View style={styles.wrapper}>
+            <Scene
               onPushRoute={this._handleAction.bind(this,
               { type: 'push', key: 'Products' })}
               name={'Home'}
               onExit={this.props.onExit}
             />
-            <Home />
+            <Home style={styles.wrapper}/>
           </View>
         )
     }
   }
 
   _renderScene(sceneProps) {
-    console.log('sceneProps', sceneProps.scene.route.key);
     const ComponentToRender = this._renderRoute(sceneProps.scene.route.key, sceneProps)
 
     return (
@@ -134,25 +135,12 @@ class MainApplication extends Component {
 }
 
 const styles = StyleSheet.create({
-  navigator: {
-    flex: 1,
-  },
   scrollView: {
-    //marginTop: 64
+    flex: 1
   },
-  row: {
-    //padding: 15,
-    backgroundColor: 'white',
-    borderBottomWidth: 1 / PixelRatio.get(),
-    borderBottomColor: '#CDCDCD',
-  },
-  rowText: {
-    fontSize: 17,
-  },
-  buttonText: {
-    fontSize: 17,
-    fontWeight: '500',
-  },
+  wrapper: {
+    flex: 1
+  }
 });
 
 export default MainApplication;

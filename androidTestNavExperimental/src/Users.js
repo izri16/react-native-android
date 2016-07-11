@@ -7,7 +7,7 @@ import {
 class Users extends Component {
   render() {
     return (
-      <View>
+      <View style={{flex: 1, alignItems: 'center'}}>
         <Text>Users Screen</Text>
       </View>
     )

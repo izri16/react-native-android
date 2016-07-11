@@ -7,7 +7,7 @@ import {
 class Products extends Component {
   render() {
     return (
-      <View>
+      <View style={{flex: 1, alignItems: 'center'}}>
         <Text>Products Screen</Text>
       </View>
     )

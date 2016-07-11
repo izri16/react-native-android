@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {
-  ScrollView, Text, PixelRatio,
+  ScrollView,
+  Text,
+  PixelRatio,
   StyleSheet,
   View
 } from 'react-native';
@@ -24,7 +26,8 @@ class MyVeryComplexScene extends Component {
           ||
           <View style={{flex: 1}} />
         }
-        <View style={{flex: 1, height: 70, justifyContent: 'center'}}>
+        <View style={{flex: 1, height: 70, justifyContent: 'center',
+                    alignItems: 'center'}}>
           <Text style={{color: '#DDDDDD'}}>
             Route: {name}
           </Text>
@@ -46,7 +49,7 @@ class MyVeryComplexScene extends Component {
 
 const styles = StyleSheet.create({
   main: {
-    borderBottomWidth: 1,
+    borderBottomWidth: 1 / PixelRatio.get(),
     borderBottomColor: '#006AFF',
     flex: 1,
     flexDirection: 'row',
