@@ -25,15 +25,15 @@ class TappableRow extends Component {
 
 const styles = StyleSheet.create({
   row: {
-    padding: 15,
-    //backgroundColor: 'blue',
-    //borderBottomWidth: 1 / PixelRatio.get(),
-    //borderBottomColor: '#CDCDCD',
-    height: 60
+    height: 70,
+    justifyContent: 'center'
   },
   buttonText: {
     fontSize: 17,
     fontWeight: '500',
+    paddingRight: 10,
+    marginLeft: 10,
+    color: '#DDDDDD'
   },
 });
 

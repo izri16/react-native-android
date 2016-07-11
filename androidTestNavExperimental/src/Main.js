@@ -113,7 +113,6 @@ class MainApplication extends Component {
               onPushRoute={this._handleAction.bind(this,
               { type: 'push', key: 'Products' })}
               name={'Home'}
-              onPopRoute={this._handleBackAction.bind(this)}
               onExit={this.props.onExit}
             />
             <Home />
