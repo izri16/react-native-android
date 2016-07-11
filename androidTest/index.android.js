@@ -10,6 +10,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 
+import { Platform } from 'react-native';
 import { applyMiddleware, createStore, compose } from 'redux';
 import createLogger from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
@@ -26,7 +27,11 @@ const logger = createLogger();
 function configureStore(initialState) {
     const enhancer = compose(
       applyMiddleware(thunkMiddleware),
-      devTools()
+      devTools({
+        name: Platform.OS,
+        hostname: 'localhost',
+        port: 5678
+      })
     );
     return createStore(rootReducer, initialState, enhancer);
 }

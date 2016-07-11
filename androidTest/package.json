@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "postinstall": "remotedev-debugger --hostname localhost --port 5678 --injectserver",
     "test": "mocha --require react-native-mock/mock.js --compilers js:babel-core/register --recursive test/*.js"
   },
   "dependencies": {
@@ -25,6 +26,7 @@
     "react-addons-test-utils": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-native-mock": "^0.2.4",
-    "remote-redux-devtools": "^0.3.3"
+    "remote-redux-devtools": "^0.3.3",
+    "remote-redux-devtools-on-debugger": "^0.5.1"
   }
 }
