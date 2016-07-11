@@ -12,20 +12,24 @@ import styles from './styles';
 import mainStyles from '../../App/styles';
 
 class User extends Component {
-  renderScene(route, navigator) {
+  renderScene(user, route, navigator) {
     return (
       <View style={styles.container}>
         <Text>
-          This is single user page
+          This is single user page for
+          <Text style={{fontWeight: 'bold'}}> {user}</Text>
         </Text>
       </View>
     );
   }
 
   render() {
+    const myRoutes = this.props.navigator.getCurrentRoutes();
+    const user = myRoutes[myRoutes.length-1].user;
+
     return (
       <Navigator 
-        renderScene={this.renderScene.bind(this)}
+        renderScene={this.renderScene.bind(this, user)}
         navigator={this.props.navigator}
         navigationBar={
           <Navigator.NavigationBar

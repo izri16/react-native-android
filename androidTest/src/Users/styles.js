@@ -22,6 +22,11 @@ const styles = StyleSheet.create({
   },
   toUser: {
     marginTop: 10
+  },
+  available: {
+    marginTop: 20,
+    paddingBottom: 20,
+    fontWeight: 'bold'
   }
 });
 

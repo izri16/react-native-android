@@ -37,6 +37,7 @@ class Main extends Component {
   }
 
   render() {
+    console.log('onMain', this.props.navigator.getCurrentRoutes());
     return (
       <Navigator
         renderScene={this.renderScene.bind(this)}

@@ -6,7 +6,8 @@ import {
   Navigator,
   TouchableOpacity,
   Text,
-  TextInput
+  TextInput,
+  ListView
 } from 'react-native';
 
 import { connect } from 'react-redux';
@@ -16,7 +17,29 @@ import { changeMyInput } from './actions'
 import styles from './styles';
 import mainStyles from '../App/styles';
 
+const UsersRow = ({onPress, children}) => {
+  return (
+    <TouchableOpacity
+        style={styles.toUser}
+        onPress={onPress}>
+        <Text>
+          {children}
+        </Text>
+      </TouchableOpacity>
+  );
+}
+
 class Users extends Component {
+
+  constructor(props) {
+    super(props);
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.state = {
+      dataSource: ds.cloneWithRows([
+        'John', 'Joel', 'James', 'Jimmy', 'Jackson', 'Jillian', 'Julie', 'Devin'
+      ])
+    };
+  }
 
   //numberOfLines - only for android
   renderScene(route, navigator) {
@@ -27,7 +50,7 @@ class Users extends Component {
               style={styles.textInput}
               onChangeText={(text) => this.props.changeMyInput(text)}
               value={this.props.myInput}
-              placeholder={'put some text here'}
+              placeholder={'Search for specific user'}
               maxLength={20}
               multiline={true}
               onBlur={() => console.log("blur")}
@@ -35,23 +58,31 @@ class Users extends Component {
               numberOfLines={5}
           />
           <Text style={styles.feedback}>
-            {this.props.myInput}
+            You have typed:
+              <Text style={{fontWeight: 'bold'}}> {this.props.myInput}</Text>
           </Text>
         </View>
-        <TouchableOpacity
-          style={styles.toUser}
-          onPress={this.gotoUserScreen.bind(this)}>
-          <Text>
-            To single user screen
-          </Text>
-        </TouchableOpacity>
+          <Text style={styles.available}>Available users</Text>
+        <View>
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={(rowData) => {
+            return (
+              <UsersRow onPress={this.gotoUserScreen.bind(this, rowData)}>
+                {rowData}
+              </UsersRow>
+            )
+          }}
+        />
+        </View>
       </View>
     );
   }
 
-  gotoUserScreen() {
+  gotoUserScreen(user) {
     this.props.navigator.push({
-      id: 'User'
+      id: 'User',
+      user: user
     })
   }
 

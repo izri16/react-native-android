@@ -36,6 +36,7 @@ class Login extends Component {
   }
 
   render() {
+    console.log('onLogin', this.props.navigator.getCurrentRoutes());
     return (
       <Navigator
         renderScene={this.renderScene.bind(this)} 

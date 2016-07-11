@@ -3,13 +3,14 @@ import {
   StyleSheet
 } from 'react-native';
 
-export const topBarColor = '#5ED549';
-export const backgroundColor = '#FFFFFF';
+export const topBarColor = '#0F574B';
+export const backgroundColor = '#62EED5';
 
 const styles = StyleSheet.create({
   topBar: {
     backgroundColor: topBarColor,
-    alignItems: 'center'
+    alignItems: 'center',
+    opacity: 0.7
   },
   topBarTitleText: {
     color: 'white',
