@@ -5,7 +5,8 @@ import {
   View,
   Navigator,
   TouchableOpacity,
-  Text
+  Text,
+  Image
 } from 'react-native';
 
 import styles from './styles';
@@ -19,6 +20,11 @@ class User extends Component {
           This is single user page for
           <Text style={{fontWeight: 'bold'}}> {user}</Text>
         </Text>
+        <Text>
+          {user} react's with love
+        </Text>
+        <Image source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
+               style={{width: 200, height: 200, marginTop: 10}} />
       </View>
     );
   }
