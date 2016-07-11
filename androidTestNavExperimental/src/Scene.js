@@ -8,6 +8,7 @@ import {
 import TappableRow from '../components/TappableRow';
 
 class MyVeryComplexScene extends Component {
+
   render() {
     return (
       <View style={[styles.main, {flex: 1, flexDirection: 'row', backgroundColor: 'blue', minHeight: 70}]}>
@@ -19,7 +20,7 @@ class MyVeryComplexScene extends Component {
         </View>
         <View style={{flex: 1, height: 70, justifyContent: 'center'}}>
           <Text style={{}}>
-            Route: {this.props.route.key}
+            Route: {this.props.name}
           </Text>
         </View>
         <View style={{flex: 1, alignItems: 'flex-end'}}>
